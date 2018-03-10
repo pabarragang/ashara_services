@@ -48,6 +48,11 @@ public class AutoController {
 		return autoRepository.findById(k_centro)
 				.orElseThrow(() -> new ResourceNotFoundException("Note", "id", k_centro));
 	}
+	
+	@GetMapping("/autos/total")
+	public Long getTotalAutos() {
+		return autoRepository.count();
+	}
 
 	@PutMapping("/autos/{id}")
 	public Auto updateAuto(@PathVariable(value = "id") Long k_centro, @Valid @RequestBody Auto autoDetails) {
